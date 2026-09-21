@@ -198,19 +198,29 @@ img{
 
 /* HOME */
 .home{
-  height: calc(100vh - 3rem);
+  height: calc(100vh - var(--header-height));
   row-gap: 1rem;
 }
 .home_data{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
   align-self: center;
+  padding: 0 1rem 3rem;
 }
 .home_title{
   font-size: var(--big-font-size);
-  margin-bottom: var(--mb-5);
+  line-height: 1.18;
+  margin-bottom: 0;
   color: #fff;
 }
 .home_subtitle{
+  display: block;
+  margin-top: var(--mb-3);
   font-size: 2.0rem;
+  line-height: 1.3;
   color: #fff;
 }
 .home_title-color{
@@ -250,26 +260,24 @@ img{
 }
 
 #myVideo {
-  /* position: fixed; */
-  /*position: absolute;*/
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
   object-fit: cover;
+  object-position: 58% center;
 }
 
 .home_container{
-  display: grid;
-  grid-template-columns: 100%;
-  grid-column-gap: 2rem;
-  margin-left: var(--mb-2);
-  margin-right: var(--mb-2);
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
   overflow: hidden;
   max-width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 /*  ABOUT */
@@ -796,21 +804,27 @@ transition: max-height 1.5s ease, opacity 1s ease;
   }
   .home{
     row-gap: 1rem;
-    height: 100%;
+    height: calc(100svh - var(--header-height));
+    min-height: 500px;
   }
   .home_container{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-column-gap: 2rem;
-    margin-left: var(--mb-2);
-    margin-right: var(--mb-2);
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    max-width: 100%;
-    height: 500px;
+    height: 100%;
+  }
+  #myVideo{
+    object-position: 63% center;
+  }
+  .home_data{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2.5rem;
+  }
+  .home_title{
+    font-size: 2rem;
+    line-height: 1.25;
   }
   .home_subtitle{
+    display: block;
+    margin-top: 1rem;
     font-size: 1.0rem;
     color: #fff;
   }
@@ -851,15 +865,16 @@ transition: max-height 1.5s ease, opacity 1s ease;
   }
 
   .home{
-    height: 100%;
+    height: 100vh;
   }
-  .home_data{
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    /*align-self: flex-end;*/
+  .home_data.bd-grid{
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: clamp(2rem, 7vw, 9rem);
+    padding-right: 2rem;
+    padding-bottom: clamp(3.5rem, 8vh, 6rem);
   }
   .home_social{
     padding-top: 0;
